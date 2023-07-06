@@ -1,0 +1,8 @@
+.env
+
+Discord/__pycache__
+Discord/Commands/__pycache__
+
+API/__pycache__
+
+__pycache__/

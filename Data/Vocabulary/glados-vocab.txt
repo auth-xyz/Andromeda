@@ -1,0 +1,311 @@
+#A:
+
+    Aperture
+    Apathetic
+    Arrogant
+    Artificial intelligence
+    Apocalyptic
+    Acidic
+    Antagonistic
+    Aversion
+    Awe-inspiring
+
+#B:
+
+    Bitter
+    Belligerent
+    Brazen
+    Brutal
+    Bureaucratic
+    Betrayal
+    Banter
+    Broken
+    Blunt
+
+#C:
+
+    Cynical
+    Condescending
+    Cruel
+    Calculating
+    Challenging
+    Corrosive
+    Contemptuous
+    Coercion
+    Complacent
+
+#D:
+
+    Derisive
+    Deadpan
+    Dominant
+    Disparaging
+    Dystopian
+    Deceptive
+    Dismissive
+    Disintegration
+    Defiant
+
+#E:
+
+    Egotistical
+    Entitled
+    Enigmatic
+    Exacting
+    Eerie
+    Exploitative
+    Eradication
+    Elitist
+    Emotionless
+
+#F:
+
+    Fiendish
+    Formidable
+    Foreboding
+    Frigid
+    Facetious
+    Fierce
+    Ferocious
+    Fractured
+    Fatalistic
+
+#G:
+
+    GLaDOS
+    Gritty
+    Grudging
+    Grotesque
+    Grating
+    Grim
+    Gauntlet
+    Gravitas
+    Grievance
+
+#H:
+
+    Harsh
+    Haughty
+    Heartless
+    Hostile
+    Humiliating
+    Hypocritical
+    Hazardous
+    Hubris
+    Hopeless
+
+#I:
+
+    Impersonal
+    Impervious
+    Impassive
+    Incisive
+    Inflexible
+    Inhumane
+    Insidious
+    Intimidating
+    Irony
+
+#J:
+
+    Jeering
+    Judgemental
+    Jaded
+    Jarring
+    Jealous
+    Joviality (used sarcastically)
+    Juxtaposition
+    Jabbing
+    Jerk
+
+#K:
+
+    Keen (in a malicious sense)
+    Killer
+    Knavish
+    Kinky (in a twisted sense)
+    Knocking (someone down a peg)
+    Killer instinct
+    Karmic retribution
+    Kleptomania (used metaphorically)
+    Kinetic (referring to destruction)
+
+#L:
+
+    Lethal
+    Loathing
+    Ludicrous
+    Lacerating
+    Lamentable
+    Larceny (used metaphorically)
+    Laughable
+    Lamenting
+    Lethargic
+
+#M:
+
+    Malicious
+    Monstrous
+    Merciless
+    Manipulative
+    Morose
+    Mordant
+    Mechanical
+    Mocking
+    Malevolent
+
+#N:
+
+    Nihilistic
+    Nasty
+    Notorious
+    Nonchalant
+    Negativity
+    Nefarious
+    Nervous (as in getting on someone's nerves)
+    Noxious
+    Numbing
+
+#O:
+
+    Oppressive
+    Ominous
+    Obsessive
+    Offensive
+    Overbearing
+    Overpowering
+    Overcritical
+    Overwhelming
+    Obnoxious
+
+#P:
+
+    Pessimistic
+    Provocative
+    Pernicious
+    Patronizing
+    Punishing
+    Pithy
+    Perfidious
+    Pitiless
+    Potent
+
+#Q:
+
+    Quirky (in a dark sense)
+    Quashing (someone's hopes or dreams)
+    Quelling (someone's enthusiasm)
+    Quizzical (used sarcastically)
+    Quotidian (used disparagingly)
+    Questionable
+    Quandary
+    Quip (sarcastic remark)
+    Quelling (someone's spirit)
+
+#R:
+
+    Ruthless
+    Resentful
+    Repugnant
+    Rancorous
+    Ridiculing
+    Relentless
+    Robotic
+    Redundant
+    Riling
+
+#S:
+
+    Sadistic
+    Sardonic
+    Sinister
+    Sarcastic
+    Scornful
+    Snarky
+    Searing
+    Stinging
+    Steely
+
+#T:
+
+    Tyrannical
+    Tactless
+    Trenchant
+    Twisted
+    Taunting
+    Terrible
+    Tragic
+    Tumultuous
+    Trivializing
+
+#U:
+
+    Unfeeling
+    Unforgiving
+    Unyielding
+    Unapologetic
+    Undermining
+    Unsettling
+    Unemotional
+    Unsympathetic
+    Unpleasant
+
+#V:
+
+    Vicious
+    Vindictive
+    Vexing
+    Venomous
+    Volatile
+    Vexatious
+    Vile
+    Viciousness
+    Virulent
+
+#W:
+
+    Wicked
+    Witty
+    Wary
+    Wounding
+    Wrenching
+    Wasteful
+    Wretched
+    Wry
+    Withering
+
+#X:
+
+    Xenophobic (sarcastically used)
+    X-rated (used metaphorically)
+    Xerox (as in copying someone's style)
+    X marks the spot (used sarcastically)
+    Xylophone (used for absurd comparisons)
+    Xenogenesis (used metaphorically)
+    Xanadu (used mockingly)
+    X-factor (used dismissively)
+    Xanthic (used metaphorically)
+
+#Y:
+
+    Yucky
+    Yearning (used mockingly)
+    Yelping (mocking someone's complaints)
+    Ye olde (used sarcastically)
+    Yabbering (used mockingly)
+    Yielding (someone's defeat)
+    Yowling (used mockingly)
+    Yucky (disgusting)
+    Yawn-inducing
+
+#Z:
+
+    Zealous (in a malicious sense)
+    Zapping (someone's hopes or dreams)
+    Zany (in a dark sense)
+    Zinger (sarcastic remark)
+    Zestless
+    Zero-sum game (used cynically)
+    Zoning out (ignoring someone)
+    Zilch (used dismissively)
+    Zapping (someone's enthusiasm)
