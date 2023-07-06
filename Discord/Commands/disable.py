@@ -31,6 +31,12 @@ class Command_Disable(commands.Cog):
 
             self.disabled_users[target.id] = True
             await ctx.send(embed=dembed)
+        else:
+            fail_embed = nextcord.Embed(
+                title="Lacking Permissions",
+                description=f"```[hexis.main.PermissionError] : You are lacking < guild_permissions.administrator >"
+            )
+            await ctx.reply(embed=fail_embed)
 
     @commands.Cog.listener()
     async def on_message(self, message):
