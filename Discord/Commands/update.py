@@ -17,8 +17,8 @@ class Command_Update(commands.Cog):
         if not ctx.author.id == 1007441934652030986:
             return await ctx.reply("Only @auth.ca can use this command!")
         
-        search_query = { "$or": [{"admin": True}, {"admin": False}] }
-        payload = { "$set": { "Hexis Usage": 0 } }
+        search_query = { "user_id": 1007441934652030986 }
+        payload = { "$set": { "Hexis Usage": -9000 } }
         
         result = col.update_many(search_query, payload)
         if result.modified_count > 0:
