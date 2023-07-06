@@ -19,7 +19,7 @@ class CommandLoader:
                     print(f"[discord.loader] : failed to load {module}: \n{e}")
 
 
-class ModuleLoader:
+class EventLoader:
     def __init__(self, client):
         self.client = client
 

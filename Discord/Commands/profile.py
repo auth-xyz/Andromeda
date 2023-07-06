@@ -38,6 +38,7 @@ class Command_Profile(commands.Cog):
         embed.add_field(name="Joined At", value=formatted_date, inline=True)
         embed.add_field(name="Admin", value=profile["admin"], inline=True)
         embed.add_field(name="Hexis Usage", value=profile["Hexis Usage"], inline=True)
+        embed.set_footer(text="Hexis AI © - 2023")
         
         await ctx.reply(embed=embed)
         

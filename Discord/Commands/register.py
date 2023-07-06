@@ -31,6 +31,7 @@ class Command_Register(commands.Cog):
             color=0x000
         )
         embed.set_thumbnail(url=author_avatar)
+        embed.set_footer(text="Hexis AI © - 2023")
         payload = {"signature": "", "admin": author_admin, "username": author.name, "user_id": author.id, "Hexis Usage": 0}
         search_payload = {"user_id": author.id}
         

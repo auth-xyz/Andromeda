@@ -8,6 +8,9 @@ class Command_Disable(commands.Cog):
         
     @commands.command(name="disable")
     async def disable(self, ctx, *, target: nextcord.Member):
+        
+        if not target:
+            ctx.reply("You must ping a target.")
         if ctx.author.guild_permissions.administrator:
         
             if ctx.author == target:
@@ -33,9 +36,10 @@ class Command_Disable(commands.Cog):
             await ctx.send(embed=dembed)
         else:
             fail_embed = nextcord.Embed(
-                title="Lacking Permissions",
-                description=f"```[hexis.main.PermissionError] : You are lacking < guild_permissions.administrator >"
+                title="",
+                description=f"```\n[hexis.PermissionError] : You lack the required permissions.```"
             )
+            fail_embed.set_footer(text="Hexis AI © - 2023")
             await ctx.reply(embed=fail_embed)
 
     @commands.Cog.listener()
