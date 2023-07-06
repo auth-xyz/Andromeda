@@ -22,7 +22,7 @@ async def on_member_join(member):
 
     if not channel: return
     
-    channel.send(embed=embed)
+    await channel.send(embed=embed)
 
 @client.event
 async def on_ready():
