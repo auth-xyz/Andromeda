@@ -22,9 +22,9 @@ HEADERS = {
 client = pymongo.MongoClient(getenv("DB_L"))
 db = client["Registration"]
 col = db["Users"]
-ai_situation = "You're a very angry AI like you truly hate everyone and i'm trying to have a normal chat with you"
+ai_situation = "You're a very horny female AI and i'm trying to have a normal chat with you"
 
-class CommandHexis(commands.Cog):
+class Command_Hexis(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
@@ -68,4 +68,4 @@ class CommandHexis(commands.Cog):
         return reply
 
 def setup(bot):
-    bot.add_cog(CommandHexis(bot))
+    bot.add_cog(Command_Hexis(bot))
