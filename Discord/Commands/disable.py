@@ -45,6 +45,7 @@ class Command_Disable(commands.Cog):
     @commands.Cog.listener()
     async def on_message(self, message):
         if message.author.id in self.disabled_users:
+            print(self.disabled_users)
             await message.delete()
 
     @commands.command(name="enable")
