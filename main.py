@@ -22,7 +22,7 @@ async def on_ready():
 async def on_message_delete(message):
     channel = client.get_channel("1070176260891889725")
     embed = nextcord.Embed(
-            title=f"{message.author.mention} deleted a message."
+            title=f"{message.author.mention} deleted a message.",
             description=f"{message.content}"
             )
     embed.set_footer(text=f"Message deleted in {message.channel}")
