@@ -21,8 +21,7 @@ class Command_Snipe(commands.Cog):
                 color=nextcord.Color.green()
             )
             embed.set_author(
-                name=message.author.name,
-                icon_url=message.author.avatar_url
+                name=message.author.name
             )
             await ctx.send(embed=embed)
         else:
