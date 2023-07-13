@@ -7,7 +7,7 @@ from nextcord.ext import commands
 
 global HEADERS, GUID, NAME
 
-NAME = "Hexis"
+NAME = "Andromeda"
 GUID = getenv("GUILD_ID")
 
 URL = getenv("API_URL")
@@ -28,7 +28,7 @@ class Command_Hexis(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(name="hx", description="Talk with Hexis")
+    @commands.command(name="ax", description="Talk with Andromeda")
     async def hx_command(self, ctx, *, query):
         async with ctx.typing():
             context = None

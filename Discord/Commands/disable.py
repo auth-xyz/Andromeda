@@ -37,9 +37,9 @@ class Command_Disable(commands.Cog):
         else:
             fail_embed = nextcord.Embed(
                 title="",
-                description=f"```\n[hexis.PermissionError] : You lack the required permissions.```"
+                description=f"```\n[andromeda.PermissionError] : You lack the required permissions.```"
             )
-            fail_embed.set_footer(text="Hexis AI © - 2023")
+            fail_embed.set_footer(text="Andromeda © - 2023")
             await ctx.reply(embed=fail_embed)
 
     @commands.Cog.listener()
