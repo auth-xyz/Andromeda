@@ -18,4 +18,14 @@ async def on_ready():
     
     print("\n[discord.main] : successfully established connection with discord.")
 
+@client.event
+async def on_message_delete(message):
+    channel = ""
+    embed = nextcord.Embed(
+            title=f"{message.author.mention} deleted a message."
+            description=f"{message.content}"
+            )
+    embed.set_footer(text=f"Message deleted in {message.channel}")
+    channel.send(embed=embed)
+
 client.run(os.getenv("TOKEN"))
