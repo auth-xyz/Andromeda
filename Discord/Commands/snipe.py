@@ -13,6 +13,7 @@ class Command_Snipe(commands.Cog):
     @commands.command(name="snipe")
     async def snipe(self, ctx):
         channel_id = ctx.channel.id
+        author_avatar = ctx.author.display_avatar
         if channel_id in self.deleted_messages:
             message = self.deleted_messages[channel_id]
             embed = nextcord.Embed(
@@ -23,6 +24,7 @@ class Command_Snipe(commands.Cog):
             embed.set_author(
                 name=message.author.name
             )
+            embed.set_thumbnail(url=author_avatar)
             await ctx.send(embed=embed)
         else:
             await ctx.send("No deleted messages to snipe.")
