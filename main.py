@@ -26,6 +26,6 @@ async def on_message_delete(message):
             description=f"{message.content}"
             )
     embed.set_footer(text=f"Message deleted in {message.channel}")
-    channel.send(embed=embed)
+    await channel.send(embed=embed)
 
 client.run(os.getenv("TOKEN"))
