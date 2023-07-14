@@ -19,6 +19,15 @@ async def on_ready():
     print("\n[discord.main] : successfully established connection with discord.")
 
 @client.event
+async def on_member_join(member):
+    channel = client.get_channel(1070173038194216990)
+    embed = nextcord.Embed(
+        title=f"[{member.mention}]",
+        description=f"Welcome to Nebula"
+    )
+    await channel.send(embed=embed)
+
+@client.event
 async def on_message_delete(message):
     channel = client.get_channel(1070176260891889725)
     embed = nextcord.Embed(
