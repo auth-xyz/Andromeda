@@ -29,3 +29,5 @@ class Command_ARSP(commands.Cog):
         await col.insert_one(payload)
         await ctx.reply("Done.")
         
+def setup(bot):
+    bot.add_cog(Command_ARSP(bot))
