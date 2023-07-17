@@ -26,7 +26,7 @@ class Command_ARSP(commands.Cog):
     async def add_query(self, ctx, word: str, response: str):
         word = word.lower()
         payload = { "value": word }
-        await col.insert_one(payload)
+        col.insert_one(payload)
         await ctx.reply("Done.")
         
 def setup(bot):
