@@ -21,9 +21,9 @@ class Command_ARSP(commands.Cog):
         word = message.content.lower()
 
         # Check if the word exists in the autoresponse collection
-        document = col.find_one({"word": word})
+        document = col.find_one({"query": word})
         if document:
-            response = document["response"]
+            response = document["value"]
             await message.reply(response)
         
     @commands.command(name="arsp_add")
