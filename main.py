@@ -41,10 +41,9 @@ async def on_message_delete(message):
 async def on_message_edit(before, after):
     channel = client.get_channel(1070176260891889725)
     embed = nextcord.Embed(
-            title=f"{message.author.mention} edited a message.",
+            title=f"{before.author.mention} edited a message.",
             description=f"Before: {before.content}\nAfter: {after.content}"
             )
-    embed.set_footer(text=f"Message edited in {message.channel}")
     await channel.send(embed=embed)
 
 
