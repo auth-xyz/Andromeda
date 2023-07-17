@@ -8,3 +8,5 @@ API/*
 __pycache__/
 
 Data/*
+
+.fleet/

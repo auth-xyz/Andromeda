@@ -13,7 +13,7 @@ cl = CommandLoader(client)
 
 @client.event
 async def on_ready():
-    await client.change_presence(activity=nextcord.Activity(type=nextcord.ActivityType.watching, name="the [Maintence Modes]"))
+    await client.change_presence(activity=nextcord.Activity(type=nextcord.ActivityType.watching, name="the **[Maintence Mode]**"))
     cl.load_commands() # Loading commands from Discord.Commands
     
     print("\n[discord.main] : successfully established connection with discord.")
