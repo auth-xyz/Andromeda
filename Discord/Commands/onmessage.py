@@ -14,10 +14,7 @@ class Command_ARSP(commands.Cog):
         self.bot = bot
 
     @commands.Cog.listener()
-    async def on_message_create(self, message):
-        if message.author == self.bot.user:
-            return
-
+    async def on_message(self, message):
         word = message.content.lower()
 
         # Check if the word exists in the autoresponse collection
