@@ -14,7 +14,7 @@ class Command_ARSP(commands.Cog):
         self.bot = bot
 
     @commands.Cog.listener()
-    async def on_message(self, message):
+    async def on_message_create(self, message):
         if message.author == self.bot.user:
             return
 
