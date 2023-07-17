@@ -14,14 +14,17 @@ class Command_ARSP(commands.Cog):
         self.bot = bot
 
     @commands.Cog.listener()
-    async def on_message_create(self, message):
+    async def on_message(self, message):
+        if message.author == self.bot.user:
+            return
 
-        payload = { "query": message.content }
-        document = await self.collection.find_one(payload)
+        word = message.content.lower()
 
+        # Check if the word exists in the autoresponse collection
+        document = await self.collection.find_one({"word": word})
         if document:
-            response = document["value"]
-            await message.reply(text=response)
+            response = document["response"]
+            await message.reply(response)
         
     @commands.command(name="arsp_add")
     async def add_query(self, ctx, word: str, response: str):
