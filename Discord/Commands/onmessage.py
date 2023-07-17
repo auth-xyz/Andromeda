@@ -21,7 +21,7 @@ class Command_ARSP(commands.Cog):
         word = message.content.lower()
 
         # Check if the word exists in the autoresponse collection
-        document = await self.collection.find_one({"word": word})
+        document = col.find_one({"word": word})
         if document:
             response = document["response"]
             await message.reply(response)
