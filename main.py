@@ -46,5 +46,15 @@ async def on_message_edit(before, after):
             )
     await channel.send(embed=embed)
 
+@client.event
+async def on_channel_update(before, after):
+    channel = client.get_channel(1070176260891889725)
+    embed = nextcord.Embed(
+        title="Channel updated.",
+        description=f"{before.name} was changed"
+    )
+    embed.add_field(name="Author", value=f"Changed {after.name}")
+    await channel.send(embed=embed)
+
 
 client.run(os.getenv("TOKEN"))
