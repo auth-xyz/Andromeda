@@ -32,7 +32,7 @@ class Command_ARSP(commands.Cog):
     @commands.command(name="arsp_remove")
     async def remove_query(self, ctx, word: str):
         payload = { "query": word }
-        col.remove_one(payload)
+        col.delete_one(payload)
         await ctx.reply("Done.")
         
 def setup(bot):
