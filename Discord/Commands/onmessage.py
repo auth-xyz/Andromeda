@@ -28,6 +28,12 @@ class Command_ARSP(commands.Cog):
         payload = { "query": word, "value": response }
         col.insert_one(payload)
         await ctx.reply("Done.")
+
+    @commands.command(name="arsp_remove")
+    async def remove_query(self, ctx, word: str):
+        payload = { "query": word }
+        col.remove_one(payload)
+        await ctx.reply("Done.")
         
 def setup(bot):
     bot.add_cog(Command_ARSP(bot))
