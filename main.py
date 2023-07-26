@@ -25,7 +25,7 @@ async def on_member_join(member):
         title=f"[{member.mention}]",
         description=f"Welcome to Nebula"
     )
-    await channel.send(embed=embed)
+    #await channel.send(embed=embed)
 
 @client.event
 async def on_member_update(before, after):
