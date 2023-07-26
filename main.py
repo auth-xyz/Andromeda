@@ -28,6 +28,19 @@ async def on_member_join(member):
     await channel.send(embed=embed)
 
 @client.event
+async def on_member_update(before, after):
+    added_roles = set(after.roles) - set(before.roles)
+    if added_roles:
+        for role in added_roles:
+            if role.id == '':
+                channel = client.get_channel(1070173038194216990)
+                embed = nextcord.Embed(
+                    title="",
+                    description=f"Welcome to nebula!"
+                )
+                await channel.send(embed=embed)
+
+@client.event
 async def on_message_delete(message):
     channel = client.get_channel(1070176260891889725)
     embed = nextcord.Embed(
