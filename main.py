@@ -32,7 +32,7 @@ async def on_member_update(before, after):
     added_roles = set(after.roles) - set(before.roles)
     if added_roles:
         for role in added_roles:
-            if role.id == '':
+            if role.id == 1070171459202322442:
                 channel = client.get_channel(1070173038194216990)
                 embed = nextcord.Embed(
                     title="",
