@@ -8,6 +8,8 @@ class Command_Test(commands.Cog):
 
     @commands.command(name="test")
     async def test(self, ctx):
+        if not ctx.author.id == 1007441934652030986:
+            return
         embed = nextcord.Embed(
             title="",
             description=f"┏━•❃°•°❀°•°❃°•°❀°•°❃•━┓\n\nWelcome {ctx.author.mention} to Nebula!\nEnjoy your stay and get some cool roles at [placeholder for test]\n\n┗━•❃°•°❀°•°❃°•°❀°•°❃•━┛"
