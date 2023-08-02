@@ -1,10 +1,10 @@
 import nextcord
 from nextcord.ext import commands
 
+
 class Command_Test(commands.Cog):
     def __init__(self, client):
         self.client = client
-
 
     @commands.command(name="test")
     async def test(self, ctx):
@@ -16,8 +16,6 @@ class Command_Test(commands.Cog):
         )
         embed.set_footer(text="go fuck yourself © - Hexis AI, 2023")
         await ctx.reply(embed=embed)
-        
-
 
 
 def setup(client):

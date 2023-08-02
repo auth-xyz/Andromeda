@@ -28,7 +28,7 @@ async def on_member_update(before, after):
                 channel = client.get_channel(1070173038194216990)
                 embed = nextcord.Embed(
                     title="",
-                    description=f"```\n┌── ⋅ ⋅ ── ✩ ── ⋅ ⋅── ⋅ ⋅ ── ✩ ── ⋅ ⋅ ── ⋅ ⋅ ──┐\nWelcome to Nebula, {before.mention} have a awesome time here!\n└── ⋅ ⋅ ── ✩ ── ⋅ ⋅── ⋅ ⋅ ── ✩ ── ⋅ ⋅ ── ⋅ ⋅ ──┘"
+                    description=f"\n┌── ⋅ ⋅ ── ✩ ── ⋅ ⋅── ⋅ ⋅ ── ✩ ── ⋅ ⋅ ── ⋅ ⋅ ──┐\n\nWelcome to Nebula, {before.mention}\nhave a awesome time here!\n\n└── ⋅ ⋅ ── ✩ ── ⋅ ⋅── ⋅ ⋅ ── ✩ ── ⋅ ⋅ ── ⋅ ⋅ ──┘"
                 )
                 await channel.send(embed=embed)
 

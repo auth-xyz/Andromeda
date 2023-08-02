@@ -11,6 +11,7 @@ client = pymongo.MongoClient(os.getenv("DB_L"))
 db = client["Registration"]
 col = db["Users"]
 
+
 class Command_Register(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -20,11 +21,10 @@ class Command_Register(commands.Cog):
         author = ctx.author
         author_admin = False
         author_avatar = author.display_avatar
-        
+
         if author.guild_permissions.ban_members:
             author_admin = True
-        
-        
+
         embed = nextcord.Embed(
             title=f"{author.display_name} : {author.id}",
             description="```\n> Registration Complete!\n> Thank you for registering, now just wait until the AI is finished, afterwards use '!hx' to talk with it!\n```",
@@ -32,12 +32,13 @@ class Command_Register(commands.Cog):
         )
         embed.set_thumbnail(url=author_avatar)
         embed.set_footer(text="Andromeda Chatbot © - 2023")
-        payload = {"signature": "", "admin": author_admin, "username": author.name, "user_id": author.id, "Andromeda Usage": 0}
+        payload = {"signature": "", "admin": author_admin, "username": author.name, "user_id": author.id,
+                   "Andromeda Usage": 0}
         search_payload = {"user_id": author.id}
-        
+
         if col.find_one(search_payload):
             return await ctx.reply("You are already registered.")
-        else: 
+        else:
             col.insert_one(payload)
             await ctx.reply(embed=embed)
 

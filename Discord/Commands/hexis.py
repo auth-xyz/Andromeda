@@ -5,11 +5,8 @@ import pymongo
 from os import getenv
 from nextcord.ext import commands
 
-global HEADERS, GUID, NAME
-
 NAME = "Andromeda"
 GUID = getenv("GUILD_ID")
-
 URL = getenv("API_URL")
 KEY = getenv("KEY")
 
@@ -22,26 +19,27 @@ HEADERS = {
 client = pymongo.MongoClient(getenv("DB_L"))
 db = client["Registration"]
 col = db["Users"]
-ai_situation = "You're a very horny female AI and i'm trying to have a normal chat with you"
+ai_situation = "We're having a chill conversation"
 
 class Command_Hexis(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(name="ax", description="Talk with Andromeda")
-    async def hx_command(self, ctx, *, query):
-        async with ctx.typing():
-            context = None
-            res = await self.ai_query(query, ctx.author.id, ctx.author.display_name, context)
-            await ctx.send(res)
+    #@commands.command(name="ax", description="Talk with Andromeda")
+    #async def hx_command(self, ctx, *, query):
+    #    async with ctx.typing():
+    #        context = None
+    #        res = await self.ai_query(query, ctx.author.id, ctx.author.display_name, context)
+    #        await ctx.send(res)
 
-    async def ai_query(self, query, user_id, user_name, context=None):
-        search_payload = { "user_id": user_id }
+    @staticmethod
+    async def ai_query(query, user_id, user_name, context=None):
+        search_payload = {"user_id": user_id}
         user_profile = col.find_one(search_payload)
         usage = user_profile["Hexis Usage"]
         usage = usage + 1
         
-        modify_payload = { "$set": {"Hexis Usage": usage } }
+        modify_payload = {"$set": {"Hexis Usage": usage}}
         if not search_payload:
             return
         
