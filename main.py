@@ -34,6 +34,14 @@ async def on_member_update(before, after):
 
 
 @client.event
+async def on_member_join(member):
+    roles_to_add = [1070216214871294022, 1070217307143536700]
+    for role in roles_to_add:
+        _role = nextcord.utils.get(member.guild.roles, id=role)
+        if _role:
+            await member.add_roles(_role)
+
+@client.event
 async def on_message_delete(message):
     channel = client.get_channel(1070176260891889725)
     embed = nextcord.Embed(
