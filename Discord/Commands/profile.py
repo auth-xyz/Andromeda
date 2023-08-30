@@ -37,7 +37,7 @@ class Command_Profile(commands.Cog):
         embed.set_thumbnail(url=author_avatar)
         embed.add_field(name="Joined At", value=formatted_date, inline=True)
         embed.add_field(name="Admin", value=profile["admin"], inline=True)
-        embed.add_field(name="Andromeda Usage", value=profile["Hexis Usage"], inline=True)
+        embed.add_field(name="Andromeda Usage", value=profile["Andromeda Usage"], inline=True)
         embed.set_footer(text="Andromeda Chatbot © - 2023")
         
         await ctx.reply(embed=embed)

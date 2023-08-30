@@ -8,7 +8,7 @@ from nextcord.ext import commands
 NAME = "Andromeda"
 GUID = getenv("GUILD_ID")
 URL = getenv("API_URL")
-KEY = getenv("KEY")
+KEY = getenv("API_KEY")
 
 HEADERS = {
     "content-type": "application/json",
@@ -21,28 +21,29 @@ db = client["Registration"]
 col = db["Users"]
 ai_situation = "We're having a chill conversation"
 
-class Command_Hexis(commands.Cog):
+
+class Command_Andromeda(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    #@commands.command(name="ax", description="Talk with Andromeda")
-    #async def hx_command(self, ctx, *, query):
-    #    async with ctx.typing():
-    #        context = None
-    #        res = await self.ai_query(query, ctx.author.id, ctx.author.display_name, context)
-    #        await ctx.send(res)
+    @commands.command(name="ax", description="Talk with Andromeda")
+    async def hx_command(self, ctx, *, query):
+        async with ctx.typing():
+            context = None
+            res = await self.ai_query(query, ctx.author.id, ctx.author.display_name, context)
+            await ctx.send(res)
 
     @staticmethod
     async def ai_query(query, user_id, user_name, context=None):
         search_payload = {"user_id": user_id}
         user_profile = col.find_one(search_payload)
-        usage = user_profile["Hexis Usage"]
+        usage = user_profile["Andromeda Usage"]
         usage = usage + 1
-        
-        modify_payload = {"$set": {"Hexis Usage": usage}}
+
+        modify_payload = {"$set": {"Andromeda Usage": usage}}
         if not search_payload:
             return
-        
+
         query_string = {
             "user_id": user_id,
             "message": query,
@@ -65,5 +66,6 @@ class Command_Hexis(commands.Cog):
                 col.update_one(search_payload, modify_payload)
         return reply
 
+
 def setup(bot):
-    bot.add_cog(Command_Hexis(bot))
+    bot.add_cog(Command_Andromeda(bot))
