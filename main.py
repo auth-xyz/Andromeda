@@ -28,7 +28,7 @@ async def on_member_update(before, after):
                 channel = client.get_channel(1070173038194216990)
                 embed = nextcord.Embed(
                     title="",
-                    description=f"\n┌── ⋅ ⋅ ── ✩ ── ⋅ ⋅── ⋅ ⋅ ── ✩ ── ⋅ ⋅ ── ⋅ ⋅ ──┐\n\nWelcome to Nebula, {before.mention}\nhave a awesome time here!\n\n└── ⋅ ⋅ ── ✩ ── ⋅ ⋅── ⋅ ⋅ ── ✩ ── ⋅ ⋅ ── ⋅ ⋅ ──┘"
+                    description=f"\n┌── ⋅ ⋅ ── ✩ ── ⋅ ⋅── ⋅ ⋅ ── ✩ ── ⋅ ⋅ ── ⋅ ⋅ ──┐\n\nWelcome to Nebula, {before.mention}\nhave an awesome time here!\n\n└── ⋅ ⋅ ── ✩ ── ⋅ ⋅── ⋅ ⋅ ── ✩ ── ⋅ ⋅ ── ⋅ ⋅ ──┘"
                 )
                 await channel.send(embed=embed)
 
@@ -40,6 +40,7 @@ async def on_member_join(member):
         _role = nextcord.utils.get(member.guild.roles, id=role)
         if _role:
             await member.add_roles(_role)
+
 
 @client.event
 async def on_message_delete(message):
