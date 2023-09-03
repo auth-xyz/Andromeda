@@ -1,7 +1,7 @@
 .env
 
 Discord/__pycache__
-Discord/Commands/__pycache__
+Discord/Interactions/__pycache__
 
 API/*
 

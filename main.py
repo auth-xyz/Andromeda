@@ -3,18 +3,26 @@ import nextcord
 
 from dotenv import load_dotenv
 from nextcord.ext import commands
-from Discord.loader import CommandLoader
+from Discord.loader import LegacyLoader, InteractionLoader
 
 load_dotenv()
 
 intents = nextcord.Intents.all()
 client = commands.Bot("!", intents=intents)
-cl = CommandLoader(client)
+cl = LegacyLoader(client)
+il = InteractionLoader(client)
 
 
 @client.event
 async def on_ready():
     cl.load_commands()
+    print("\n")
+    il.load_interaction()
+
+    try:
+        await client.sync_all_application_commands()
+    except Exception as e:
+        print(f"[discord.error] : {e}")
 
     print("\n[discord.main] : successfully established connection with discord.")
 
