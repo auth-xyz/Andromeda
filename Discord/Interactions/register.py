@@ -1,6 +1,7 @@
 import os
 import pymongo
 import nextcord
+from nextcord import Interaction
 
 from nextcord.ext import commands
 from dotenv import load_dotenv
@@ -8,17 +9,18 @@ from dotenv import load_dotenv
 load_dotenv()
 
 client = pymongo.MongoClient(os.getenv("DB_L"))
-db = client["Registration"]
-col = db["Users"]
+db = client["Dataset"]
+col = db["Chatlogs"]
+dbot = commands.Bot()
 
 
-class Command_Register(commands.Cog):
+class int_register(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(name="register", description="Registers the user to the database")
-    async def register(self, ctx):
-        author = ctx.author
+    @dbot.slash_command(guild_ids=[1070169312284917860])
+    async def register(self, interaction: Interaction):
+        author = interaction.user
         author_admin = False
         author_avatar = author.display_avatar
 
@@ -27,7 +29,8 @@ class Command_Register(commands.Cog):
 
         embed = nextcord.Embed(
             title=f"{author.display_name} : {author.id}",
-            description="```\n> Registration Complete!\n> Thank you for registering, now just wait until the AI is finished, afterwards use '!hx' to talk with it!\n```",
+            description="```\n> Registration Complete!\n> Thank you for registering, now just wait until the AI is "
+                        "finished, afterwards use '!ax' to talk with it!\n```",
             color=0x000
         )
         embed.set_thumbnail(url=author_avatar)
@@ -37,11 +40,11 @@ class Command_Register(commands.Cog):
         search_payload = {"user_id": author.id}
 
         if col.find_one(search_payload):
-            return await ctx.reply("You are already registered.")
+            return await interaction.send("You are already registered.")
         else:
             col.insert_one(payload)
-            await ctx.reply(embed=embed)
+            await interaction.send(embed=embed)
 
 
 def setup(bot):
-    bot.add_cog(Command_Register(bot))
+    bot.add_cog(int_register(bot))

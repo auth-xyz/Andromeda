@@ -1,5 +1,6 @@
 import os
 import nextcord
+import pymongo
 
 from dotenv import load_dotenv
 from nextcord.ext import commands
@@ -11,6 +12,10 @@ intents = nextcord.Intents.all()
 client = commands.Bot("!", intents=intents)
 cl = LegacyLoader(client)
 il = InteractionLoader(client)
+
+dbc = pymongo.MongoClient(os.getenv("DB_L"))
+db = dbc["Dataset"]
+col = db["Chatlogs"]
 
 
 @client.event
@@ -25,6 +30,16 @@ async def on_ready():
         print(f"[discord.error] : {e}")
 
     print("\n[discord.main] : successfully established connection with discord.")
+
+
+@client.event
+async def on_message(message):
+    word = message.content.lower()
+    document = col.find_one({"query": word})
+
+    if document:
+        response = document["value"]
+        await message.reply(response)
 
 
 @client.event

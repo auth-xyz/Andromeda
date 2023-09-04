@@ -24,7 +24,7 @@ class int_response(commands.Cog):
             return
 
         col.insert_one(payload)
-        await interaction.send(content="Done.")
+        await interaction.send(content="Done.", ephemeral=True)
 
     @dbot.slash_command(guild_ids=[1070169312284917860], description="Removes a response", name="rem_response")
     async def remove_query(self, interaction: Interaction, arg: str = SlashOption(required=True, name="trigger")):
@@ -33,7 +33,7 @@ class int_response(commands.Cog):
             return
 
         col.delete_one(payload)
-        await interaction.send(content="Done.")
+        await interaction.send(content="Done.", ephemeral=True)
 
 
 def setup(bot):

@@ -18,7 +18,7 @@ class int_profile(commands.Cog):
     def __init__(self):
         ...
 
-    @bot.slash_command(guild_ids=[1070169312284917860], description="Outputs your profile")
+    @bot.slash_command(guild_ids=[1070169312284917860], description="Outputs your profile", name="profile")
     async def profile(self, interaction: Interaction, arg: nextcord.Member = SlashOption(name="user", required=False)):
         if arg:
             query = {"user_id": arg.id}

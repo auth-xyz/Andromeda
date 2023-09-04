@@ -13,7 +13,7 @@ KEY = getenv("API_KEY")
 HEADERS = {
     "content-type": "application/json",
     "X-RapidAPI-Key": KEY,
-    "X-RapidAPI-Host": "waifu.p.rapidapi.com"
+    "X-RapidAPI-Host": "aeona3.p.rapidapi.com"
 }
 
 client = pymongo.MongoClient(getenv("DB_L"))
@@ -26,12 +26,12 @@ class Command_Andromeda(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(name="ax", description="Talk with Andromeda")
-    async def hx_command(self, ctx, *, query):
-        async with ctx.typing():
-            context = None
-            res = await self.ai_query(query, ctx.author.id, ctx.author.display_name, context)
-            await ctx.send(res)
+    #@commands.command(name="ax", description="Talk with Andromeda")
+    # async def hx_command(self, ctx, *, query):
+    #     async with ctx.typing():
+    #         context = None
+    #         res = await self.ai_query(query, ctx.author.id, ctx.author.display_name, context)
+    #         await ctx.send(res)
 
     @staticmethod
     async def ai_query(query, user_id, user_name, context=None):
@@ -45,13 +45,10 @@ class Command_Andromeda(commands.Cog):
             return
 
         query_string = {
-            "user_id": user_id,
-            "message": query,
-            "from_name": user_name,
-            "to_name": NAME,
-            "situation": ai_situation,
-            "translate_from": "en",
-            "translate_to": "en"
+            "userId": user_id,
+            "text": query,
+            "chatbot": NAME,
+            "context": ai_situation
         }
         ai_obj = {
             "key1": None,
