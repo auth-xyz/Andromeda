@@ -4,6 +4,8 @@ import pymongo
 
 from dotenv import load_dotenv
 from nextcord.ext import commands
+
+from Utils.welcome import generate_custom_message
 from Discord.loader import LegacyLoader, InteractionLoader
 
 load_dotenv()
@@ -43,15 +45,17 @@ async def on_message(message):
 
 
 @client.event
-async def on_member_update(before, after):
+async def on_member_update(before, after: nextcord.Member):
     added_roles = set(after.roles) - set(before.roles)
     if added_roles:
         for role in added_roles:
             if role.id == 1070171459202322442:
                 channel = client.get_channel(1070173038194216990)
+                msg = generate_custom_message(f"Welcome to Nebula, {after.display_name}\nHave an awesome time here!",
+                                              table_width=40, center_text=False)
                 embed = nextcord.Embed(
-                    title="",
-                    description=f"\n┌── ⋅ ⋅ ── ✩ ── ⋅ ⋅── ⋅ ⋅ ── ✩ ── ⋅ ⋅ ── ⋅ ⋅ ──┐\n\nWelcome to Nebula, {before.mention}\nhave an awesome time here!\n\n└── ⋅ ⋅ ── ✩ ── ⋅ ⋅── ⋅ ⋅ ── ✩ ── ⋅ ⋅ ── ⋅ ⋅ ──┘"
+                    title="New Member!",
+                    description=f"```\n{msg}\n```"
                 )
                 await channel.send(embed=embed)
 
@@ -66,10 +70,10 @@ async def on_member_join(member):
 
 
 @client.event
-async def on_message_delete(message):
+async def on_message_delete(message: nextcord.Message):
     channel = client.get_channel(1070176260891889725)
     embed = nextcord.Embed(
-        title=f"{message.author.mention} deleted a message.",
+        title=f"{message.author.display_name} deleted a message.",
         description=f"{message.content}"
     )
     embed.set_footer(text=f"Message deleted in {message.channel}")
@@ -80,7 +84,7 @@ async def on_message_delete(message):
 async def on_message_edit(before, after):
     channel = client.get_channel(1070176260891889725)
     embed = nextcord.Embed(
-        title=f"{before.author.mention} edited a message.",
+        title=f"{before.author.display_name} edited a message.",
         description=f"Before: {before.content}\nAfter: {after.content}"
     )
     await channel.send(embed=embed)
