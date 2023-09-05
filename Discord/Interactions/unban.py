@@ -15,7 +15,7 @@ class int_unban(commands.Cog):
                     reason: str = SlashOption(required=False)):
         try:
             await user.unban(reason=reason)
-            await interaction.send(content=f"Unbanned {user}")
+            await interaction.send(content=f"Done.", ephemeral=True)
         except DiscordException as e:
             print(e)
 
