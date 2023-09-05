@@ -54,10 +54,10 @@ async def on_member_update(before, after: nextcord.Member):
                 msg = generate_custom_message(f"Welcome to Nebula, {after.display_name}\nHave an awesome time here!",
                                               table_width=40, center_text=False)
                 embed = nextcord.Embed(
-                    title=f"Member {after.mention} joined!",
+                    title=f"Member {after} joined!",
                     description=f"```\n{msg}\n```"
                 )
-                await channel.send(embed=embed)
+                await channel.send(embed=embed, content=f"{after.mention}")
 
 
 @client.event
