@@ -38,6 +38,8 @@ async def on_ready():
 async def on_message(message):
     word = message.content.lower()
     document = col.find_one({"query": word})
+    if message.author.bot:
+        return
 
     if document:
         response = document["value"]
@@ -57,6 +59,7 @@ async def on_member_update(before, after: nextcord.Member):
                     title=f"Member {after} joined!",
                     description=f"```\n{msg}\n```"
                 )
+                embed.set_thumbnail(after.display_avatar)
                 await channel.send(embed=embed, content=f"{after.mention}")
 
 
@@ -72,32 +75,50 @@ async def on_member_join(member):
 @client.event
 async def on_message_delete(message: nextcord.Message):
     channel = client.get_channel(1070176260891889725)
+    title = f"Deleted Message in {message.channel.name}"
+    desc = f"User {message.author.display_name} deleted a message\n```\n{message.content}\n```"
+    author = message.author
+    if message.author.bot:
+        return
+
     embed = nextcord.Embed(
-        title=f"{message.author.display_name} deleted a message.",
-        description=f"{message.content}"
+        title=title,
+        description=desc,
+        colour=nextcord.Color.red()
     )
-    embed.set_footer(text=f"Message deleted in {message.channel}")
+    embed.set_thumbnail(author.display_avatar)
     await channel.send(embed=embed)
 
 
 @client.event
-async def on_message_edit(before, after):
-    channel = client.get_channel(1070176260891889725)
+async def on_message_edit(before: nextcord.Message, after: nextcord.Message):
+    channel: nextcord.TextChannel = client.get_channel(1070176260891889725)
+    title = f"Edited Message in {before.channel.name}"
+    desc = f"User {before.author.display_name} edited a message.\n```\nFrom: {before.content}\nTo: {after.content}\n```"
+    author = before.author or after.author
+
     embed = nextcord.Embed(
-        title=f"{before.author.display_name} edited a message.",
-        description=f"Before: {before.content}\nAfter: {after.content}"
+        title=title,
+        description=desc,
+        color=nextcord.Color.yellow(),
+
     )
+    embed.set_thumbnail(author.display_avatar)
     await channel.send(embed=embed)
 
 
 @client.event
-async def on_channel_update(before, after):
+async def on_channel_update(before: nextcord.TextChannel, after: nextcord.TextChannel):
     channel = client.get_channel(1070176260891889725)
+    text = f"Channel {before.name} was changed"
+    chan = set(before) - set(after)
+    desc = f"```\nChanges:\n{chan}\n```"
+
     embed = nextcord.Embed(
-        title="Channel updated.",
-        description=f"{before.name} was changed"
+        title=text,
+        description=desc,
+        colour=nextcord.Color.blue()
     )
-    embed.add_field(name="Author", value=f"Changed {after.name}")
     await channel.send(embed=embed)
 
 
