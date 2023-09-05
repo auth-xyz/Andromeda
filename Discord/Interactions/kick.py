@@ -15,10 +15,11 @@ class int_kick(commands.Cog):
     async def kick(self, interaction: Interaction, user: Member = SlashOption(required=True),
                    reason: str = SlashOption(required=False)):
         text = f"{user.name} has been kicked."
-        pu_desc = f"```\nModerator: {interaction.user.display_name}"
-        pr_desc = f"```\nModerator: {interaction.user.display_name}\nReason: {reason}"
-        public_channel = dbot.get_channel(1070188919192305744)
-        private_channel = dbot.get_channel(1070569664599556146)
+        pu_desc = f"```\nModerator: {interaction.user.display_name}\n```"
+        pr_desc = f"```\nModerator: {interaction.user.display_name}\nReason: {reason}\n```"
+
+        pu = interaction.guild.get_channel(1070188919192305744)
+        pr = interaction.guild.get_channel(1070569664599556146)
 
         public_embed = nextcord.Embed(
             title=text,
@@ -32,10 +33,11 @@ class int_kick(commands.Cog):
         )
 
         try:
+            await interaction.send(content=f"Done.", ephemeral=True)
             await user.kick(reason=reason)
-            await interaction.send(content=f"Kicked {user}")
-            await public_channel.send(embed=public_embed)
-            await private_channel.send(embed=private_embed)
+            await pr.send(embed=private_embed)
+            await pu.send(embed=public_embed)
+
         except DiscordException as e:
             print(e)
 

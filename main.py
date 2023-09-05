@@ -64,12 +64,17 @@ async def on_member_update(before, after: nextcord.Member):
 
 
 @client.event
-async def on_member_join(member):
-    roles_to_add = [1070216214871294022, 1070217307143536700]
-    for role in roles_to_add:
-        _role = nextcord.utils.get(member.guild.roles, id=role)
-        if _role:
-            await member.add_roles(_role)
+async def on_member_join(member: nextcord.Member):
+    ids = [1070217307143536700, 1070216214871294022]
+    sid = 521850636321423371
+
+    serv = client.get_guild(sid)
+    if serv:
+        for rid in ids:
+            role = serv.get_role(rid)
+            if not role:
+                return
+            await member.add_roles(role)
 
 
 @client.event
