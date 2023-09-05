@@ -3,9 +3,10 @@ import pymongo
 
 from os import getenv
 from dotenv import load_dotenv
-from nextcord import Interaction, SlashOption
+from nextcord import Interaction, SlashOption, Permissions
 from nextcord.ext import commands
 
+load_dotenv()
 client = pymongo.MongoClient(getenv("DB_L"))
 db = client["Dataset"]
 col = db["Chatlogs"]
@@ -17,6 +18,7 @@ class int_response(commands.Cog):
         self.bot = bot
 
     @dbot.slash_command(guild_ids=[1070169312284917860], description="Adds a response", name="add_response")
+    @commands.has_permissions(ban_members=True)
     async def add_query(self, interaction: Interaction, trigger: str = SlashOption(required=True),
                         response: str = SlashOption(required=True)):
         payload = {"query": trigger, "value": response}

@@ -1,9 +1,9 @@
 import re
 from datetime import timedelta
 
-from nextcord import Interaction, Member, SlashOption, DiscordException
+from nextcord import Interaction, Member, SlashOption, DiscordException, Permissions
 from nextcord.ext import commands
-from nextcord.ext.commands import has_permissions
+
 
 dbot = commands.Bot()
 
@@ -13,7 +13,7 @@ class int_mute(commands.Cog):
         self.bot = bot
 
     @dbot.slash_command(guild_ids=[1070169312284917860])
-    @has_permissions(moderate_members=True)
+    @commands.has_permissions(moderate_members=True)
     async def mute(self, interaction: Interaction, user: Member = SlashOption(required=True),
                    reason: str = SlashOption(required=False), time: str = SlashOption(required=False)):
         time = self.parse_duration(time)
