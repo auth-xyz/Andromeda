@@ -99,17 +99,19 @@ async def on_message_delete(message: nextcord.Message):
 async def on_message_edit(before: nextcord.Message, after: nextcord.Message):
     channel: nextcord.TextChannel = client.get_channel(1070176260891889725)
     title = f"Edited Message in {before.channel.name}"
-    desc = f"User {before.author.display_name} edited a message.\n```\nFrom: {before.content}\nTo: {after.content}\n```"
     author = before.author or after.author
 
-    embed = nextcord.Embed(
-        title=title,
-        description=desc,
-        color=nextcord.Color.yellow(),
+    # Check if the content before and after the edit is different
+    if before.content != after.content and not author.bot:
+        desc = f"User {author.display_name} edited a message.\n```\nFrom: {before.content}\n\nTo: {after.content}\n```"
 
-    )
-    embed.set_thumbnail(author.display_avatar)
-    await channel.send(embed=embed)
+        embed = nextcord.Embed(
+            title=title,
+            description=desc,
+            color=nextcord.Color.yellow(),
+        )
+        embed.set_thumbnail(author.display_avatar)
+        await channel.send(embed=embed)
 
 
 @client.event

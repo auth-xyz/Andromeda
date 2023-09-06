@@ -4,6 +4,7 @@ import nextcord
 
 from nextcord.ext import commands
 from dotenv import load_dotenv
+from Utils.welcome import generate_custom_message
 
 load_dotenv()
 
@@ -24,11 +25,12 @@ class Command_Register(commands.Cog):
 
         if author.guild_permissions.ban_members:
             author_admin = True
+        msg = generate_custom_message(f"Registration Complete!\n Now, you can wait till Auth fixes the AI chatbot.\n:)")
 
         embed = nextcord.Embed(
             title=f"{author.display_name} : {author.id}",
-            description="```\n> Registration Complete!\n> Thank you for registering, now just wait until the AI is finished, afterwards use '!hx' to talk with it!\n```",
-            color=0x000
+            description=msg,
+            color=nextcord.Color.gold()
         )
         embed.set_thumbnail(url=author_avatar)
         embed.set_footer(text="Andromeda Chatbot © - 2023")

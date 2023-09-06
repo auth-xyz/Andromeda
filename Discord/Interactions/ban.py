@@ -5,6 +5,7 @@ from nextcord.ext import commands
 intents = nextcord.Intents.all()
 client = commands.Bot("!", intents=intents)
 
+
 class int_ban(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
