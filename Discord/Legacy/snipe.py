@@ -1,6 +1,7 @@
 import nextcord
 from nextcord.ext import commands
 
+
 class Command_Snipe(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -29,6 +30,6 @@ class Command_Snipe(commands.Cog):
         else:
             await ctx.send("No deleted messages to snipe.")
 
+
 def setup(bot):
     bot.add_cog(Command_Snipe(bot))
-

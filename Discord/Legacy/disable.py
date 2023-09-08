@@ -1,18 +1,19 @@
 import nextcord
 from nextcord.ext import commands
 
+
 class Command_Disable(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.disabled_users = {}
-        
+
     @commands.command(name="disable")
     async def disable(self, ctx, *, target: nextcord.Member):
-        
+
         if not target:
             ctx.reply("You must ping a target.")
         if ctx.author.guild_permissions.administrator:
-        
+
             if ctx.author == target:
                 return await ctx.send("You cannot disable yourself.")
 
@@ -50,12 +51,12 @@ class Command_Disable(commands.Cog):
 
     @commands.command(name="enable")
     async def enable(self, ctx, *, target: nextcord.Member):
-        if ctx.author.guild_permissions.administrator:    
+        if ctx.author.guild_permissions.administrator:
             dembed = nextcord.Embed(
                 title="User was Re-Activated.",
                 description=f"{target.mention} was enabled by: {ctx.author.name}"
             )
-            
+
             if target.id in self.disabled_users:
                 del self.disabled_users[target.id]
                 await ctx.send(embed=dembed)
@@ -64,10 +65,11 @@ class Command_Disable(commands.Cog):
                 title="User was Re-Activated.",
                 description=f"{target.mention} was enabled by: {ctx.author.name}"
             )
-            
+
             if target.id in self.disabled_users:
                 del self.disabled_users[target.id]
                 await ctx.send(embed=dembed)
+
 
 def setup(bot):
     bot.add_cog(Command_Disable(bot))

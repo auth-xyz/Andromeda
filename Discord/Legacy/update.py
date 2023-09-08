@@ -8,10 +8,11 @@ client = pymongo.MongoClient(getenv("DB_L"))
 db = client["Registration"]
 col = db["Users"]
 
+
 class Command_Update(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-    
+
     @commands.command(name="update", description="Updates the bot")
     async def update(self, ctx):
         if not ctx.author.id == 1007441934652030986:
@@ -35,6 +36,7 @@ class Command_Update(commands.Cog):
             )
             print(f"[mongo.db] : no entry(ies) to update were found.")
             await ctx.reply(embed=nan_embed)
-            
+
+
 def setup(bot):
     bot.add_cog(Command_Update(bot))

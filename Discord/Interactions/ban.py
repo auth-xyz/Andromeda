@@ -16,12 +16,10 @@ class int_ban(commands.Cog):
                   reason: str = SlashOption(required=False)):
 
         text = f"{user.name} has been banned."
-        pu_desc = f"```\nModerator: {interaction.user.display_name}\n```"
+        pu_desc = f"```\nModerator: {interaction.user.display_name}\nReason: {reason}, RIP BOZO :skull:```"
         pr_desc = f"```\nModerator: {interaction.user.display_name}\nReason: {reason}\n```"
         chan_public = interaction.guild.get_channel(1070188919192305744)
         chan_private = interaction.guild.get_channel(1070569664599556146)
-
-        print(f"{chan_public}, {chan_private}")
 
         public_embed = nextcord.Embed(
             title=text,
