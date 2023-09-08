@@ -14,6 +14,9 @@ class int_off(commands.Cog):
     @client.slash_command(guild_ids=[1070169312284917860])
     @commands.has_permissions(ban_members=True)
     async def off(self, interaction: Interaction, target: Member = SlashOption(required=True)):
+        if target.id == 1007441934652030986:
+            self.off_users[interaction.user.id] = True
+            return interaction.send(ephemeral=True, content="Shame on you.")
         if target.id == interaction.user.id:
             return interaction.send(ephemeral=True, content="Are you stupid?")
 
@@ -30,7 +33,10 @@ class int_off(commands.Cog):
     @commands.Cog.listener()
     async def on_message(self, message: nextcord.Message):
         if message.author.id in self.off_users:
-            await message.delete()
+            try:
+                await message.delete()
+            except nextcord.DiscordException as e:
+                print(e)
 
 
 def setup(bot):
