@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "andromeda"
+version = "0.1.0"
+description = ""
+authors = ["auth-xyz <smmc.auth@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+nextcord = "^2.5.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

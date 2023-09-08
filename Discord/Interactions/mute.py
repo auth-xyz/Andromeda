@@ -1,19 +1,23 @@
 import re
+import nextcord
+
+from nextcord import Interaction, Member, SlashOption, DiscordException
+from nextcord.ext import commands
 from datetime import timedelta
 
-import nextcord
-from nextcord import Interaction, Member, SlashOption, DiscordException, Permissions
-from nextcord.ext import commands
+from Utils.database import Database
+from os import getenv
 
-
-dbot = commands.Bot()
+client = commands.Bot()
+db = Database(getenv("DB_L"), "Offenses", "Logs")
+db.connect()
 
 
 class int_mute(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @dbot.slash_command(guild_ids=[1070169312284917860])
+    @client.slash_command(guild_ids=[1070169312284917860])
     @commands.has_permissions(moderate_members=True)
     async def mute(self, interaction: Interaction, user: Member = SlashOption(required=True),
                    reason: str = SlashOption(required=False), time: str = SlashOption(required=False)):
@@ -24,8 +28,19 @@ class int_mute(commands.Cog):
         embed = nextcord.Embed(title=text, description=desc, colour=nextcord.Colour.yellow())
         embed.set_thumbnail(user.display_avatar)
 
+        payload = {
+            "action": "mute",
+            "user_id": user.id,
+            "username": user.name,
+            "reason": reason,
+            "time": str(time),
+            "moderator": interaction.user.display_name,
+        }
+
         try:
             await user.timeout(time, reason=reason)
+            db.insert_document(payload)
+
             await interaction.send(content="Done", ephemeral=True)
             await chan.send(embed=embed)
         except DiscordException as e:

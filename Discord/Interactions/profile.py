@@ -1,30 +1,29 @@
 import nextcord
+import os
+
 from nextcord import SlashOption, Interaction, Embed
+from Utils.database import Database
 from nextcord.ext import commands
 from dotenv import load_dotenv
 
-import pymongo
-import os
-
-bot = commands.Bot()
+client = commands.Bot()
 load_dotenv()
 
-client = pymongo.MongoClient(os.getenv("DB_L"))
-db = client["Registration"]
-col = db["Users"]
+db = Database(os.getenv("DB_L"), "Registration", "Users")
+db.connect()
 
 
 class int_profile(commands.Cog):
     def __init__(self):
         ...
 
-    @bot.slash_command(guild_ids=[1070169312284917860], description="Outputs your profile", name="profile")
+    @client.slash_command(guild_ids=[1070169312284917860], description="Outputs your profile", name="profile")
     async def profile(self, interaction: Interaction, arg: nextcord.Member = SlashOption(name="user", required=False)):
         if arg:
             query = {"user_id": arg.id}
         else:
             query = {"user_id": interaction.user.id}
-        profile = col.find_one(query)
+        profile = db.find_document(query)
 
         if not profile:
             await interaction.send(content="You have yet to register!", ephemeral=True)

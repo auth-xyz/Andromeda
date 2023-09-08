@@ -5,8 +5,7 @@ Discord/Interactions/__pycache__
 
 API/*
 
-__pycache__/
+__pycache__/*
+poetry.lock
 
 Data/*
-
-.fleet/

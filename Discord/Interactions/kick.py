@@ -1,16 +1,21 @@
-from nextcord import Interaction, Member, SlashOption, DiscordException
-from nextcord.ext import commands
 import nextcord
 
+from nextcord import Interaction, Member, SlashOption, DiscordException
+from Utils.database import Database
+from nextcord.ext import commands
+from os import getenv
 
-dbot = commands.Bot()
+client = commands.Bot()
+
+db = Database(getenv("DB_L"), "Offenses", "Logs")
+db.connect()
 
 
 class int_kick(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @dbot.slash_command(guild_ids=[1070169312284917860])
+    @client.slash_command(guild_ids=[1070169312284917860])
     @commands.has_permissions(kick_members=True)
     async def kick(self, interaction: Interaction, user: Member = SlashOption(required=True),
                    reason: str = SlashOption(required=False)):
@@ -20,6 +25,14 @@ class int_kick(commands.Cog):
 
         pu = interaction.guild.get_channel(1070188919192305744)
         pr = interaction.guild.get_channel(1070569664599556146)
+
+        payload = {
+            "action": "kick",
+            "user_id": user.id,
+            "username": user.name,
+            "reason": reason,
+            "moderator": interaction.user.display_name,
+        }
 
         public_embed = nextcord.Embed(
             title=text,
@@ -33,8 +46,10 @@ class int_kick(commands.Cog):
         )
 
         try:
-            await interaction.send(content=f"Done.", ephemeral=True)
             await user.kick(reason=reason)
+            db.insert_document(payload)
+
+            await interaction.send(content=f"Done.", ephemeral=True)
             await pr.send(embed=private_embed)
             await pu.send(embed=public_embed)
 

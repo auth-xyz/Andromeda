@@ -16,9 +16,9 @@ class int_off(commands.Cog):
     async def off(self, interaction: Interaction, target: Member = SlashOption(required=True)):
         if target.id == 1007441934652030986:
             self.off_users[interaction.user.id] = True
-            return interaction.send(ephemeral=True, content="Shame on you.")
+            return await interaction.send(ephemeral=True, content="Shame on you.")
         if target.id == interaction.user.id:
-            return interaction.send(ephemeral=True, content="Are you stupid?")
+            return await interaction.send(ephemeral=True, content="Are you stupid?")
 
         self.off_users[target.id] = True
         await interaction.send(content="Done", ephemeral=True)

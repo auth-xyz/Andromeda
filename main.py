@@ -1,11 +1,11 @@
 import os
 import nextcord
-import pymongo
 
 from dotenv import load_dotenv
 from nextcord.ext import commands
 
 from Utils.welcome import generate_custom_message
+from Utils.database import Database
 from Discord.loader import LegacyLoader, InteractionLoader
 
 load_dotenv()
@@ -15,9 +15,8 @@ client = commands.Bot("!", intents=intents)
 cl = LegacyLoader(client)
 il = InteractionLoader(client)
 
-dbc = pymongo.MongoClient(os.getenv("DB_L"))
-db = dbc["Dataset"]
-col = db["Chatlogs"]
+db = Database(os.getenv("DB_L"), "Dataset", "Chatlogs")
+db.connect()
 
 
 @client.event
@@ -31,13 +30,13 @@ async def on_ready():
     except Exception as e:
         print(f"[discord.error] : {e}")
 
-    print("\n[discord.main] : successfully established connection with discord.")
+    print("\n[discord.main] : successfully established connection with discord.\n")
 
 
 @client.event
 async def on_message(message):
     word = message.content.lower()
-    document = col.find_one({"query": word})
+    document = db.find_document({"query": word})
     if message.author.bot:
         return
 
@@ -101,7 +100,6 @@ async def on_message_edit(before: nextcord.Message, after: nextcord.Message):
     title = f"Edited Message in {before.channel.name}"
     author = before.author or after.author
 
-    # Check if the content before and after the edit is different
     if before.content != after.content and not author.bot:
         desc = f"User {author.display_name} edited a message.\n```\nFrom: {before.content}\n\nTo: {after.content}\n```"
 
