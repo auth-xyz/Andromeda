@@ -1,27 +1,30 @@
 ## Requirements:
-> `python 3.10+`
-> `a working brain`
+> [Python 3.10+](https://python.org/downloads)
 
+### Setting up
 ```bash
-# Initialize the repository
-git clone https://github.com/auth-xyz/hexis-tfai
-cd hexis-tfai
+git clone https://github.com/auth-xyz/Andromeda
+cd Andromeda
 
-# Install requirements
-python3 -m pip install -r requirements.txt # Or:
+# Installing dependencies <pip>
 pip install -r requirements.txt
 
-# Create a .env on the root directory with the following:
-> DB_U # Database user
-> DB_P # Database password
-> DB_L # Database uri (using mongo on this repo)
-> TOKEN # discord bot token
+# Installing dependencies <poetry>
+poetry install
 
-# For the current iteration of hexis, you'll need a rapid api account that is subscribed
-# to the "Waifu" api.
+# Create a .env file that follows this example:
+DB_U=database user
+DB_P=database password (mongodb)
+DB_L=database link (uri)
 
-# so add the following to the .env
-> API_URL # should be: "https://waifu.p.rapidapi.com/path"
-> KEY # API key
-> GUILD_ID # The guild you're using the bot on. (i forgor why i need this...)
+TOKEN=discord token
+GUILD_ID=the guild where interactions will be used
+
+# After everything is done, you should be able to just:
+
+# Running via python:
+python3 main.py
+
+# Running via poetry:
+poetry run python main.py
 ```
