@@ -35,10 +35,11 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    word = message.content.lower()
-    document = db.find_document({"query": word})
     if message.author.bot:
         return
+
+    word = message.content.lower()
+    document = db.find_document({"query": word})
 
     if document:
         response = document["value"]
@@ -48,6 +49,7 @@ async def on_message(message):
 @client.event
 async def on_member_update(before, after: nextcord.Member):
     added_roles = set(after.roles) - set(before.roles)
+
     if added_roles:
         for role in added_roles:
             if role.id == 1070171459202322442:
@@ -66,37 +68,36 @@ async def on_member_update(before, after: nextcord.Member):
 async def on_member_join(member: nextcord.Member):
     ids = [1070217307143536700, 1070216214871294022]
     sid = 521850636321423371
-
     serv = client.get_guild(sid)
+
     if serv:
         for rid in ids:
             role = serv.get_role(rid)
-            if not role:
-                return
-            await member.add_roles(role)
+            if role:
+                await member.add_roles(role)
 
 
 @client.event
 async def on_message_delete(message: nextcord.Message):
+    if message.author.bot:
+        return
+
     channel = client.get_channel(1070176260891889725)
     title = f"Deleted Message in {message.channel.name}"
     desc = f"User {message.author.display_name} deleted a message\n```\n{message.content}\n```"
-    author = message.author
-    if message.author.bot:
-        return
 
     embed = nextcord.Embed(
         title=title,
         description=desc,
         colour=nextcord.Color.red()
     )
-    embed.set_thumbnail(author.display_avatar)
+    embed.set_thumbnail(message.author.display_avatar)
     await channel.send(embed=embed)
 
 
 @client.event
 async def on_message_edit(before: nextcord.Message, after: nextcord.Message):
-    channel: nextcord.TextChannel = client.get_channel(1070176260891889725)
+    channel = client.get_channel(1070176260891889725)
     title = f"Edited Message in {before.channel.name}"
     author = before.author or after.author
 
@@ -113,7 +114,7 @@ async def on_message_edit(before: nextcord.Message, after: nextcord.Message):
 
 
 @client.event
-async def on_channel_update(before: nextcord.TextChannel, after: nextcord.TextChannel):
+async def on_channel_update(before, after):
     channel = client.get_channel(1070176260891889725)
     text = f"Channel {before.name} was changed"
     chan = set(before) - set(after)
