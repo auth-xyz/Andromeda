@@ -1,0 +1,11 @@
+[todo]
+assignable_roles = "not done"
+embeds = "partially"
+minigames = "nuh uh"
+fix_legacy = "didn't start"
+
+[done]
+interactions = "done"
+database_handler = "done"
+event_handler = "done"
+
