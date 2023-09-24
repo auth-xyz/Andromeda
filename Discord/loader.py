@@ -65,6 +65,21 @@ class EventLoader:
         )
         await channel.send(embed=embed)
 
+    async def on_raw_reaction_add(self, payload):
+        guild_id = 1070169312284917860
+
+        guild = self.client.get_guild(guild_id)
+        message = await self.client.get_channel(payload.channel_id).fetch_message(payload.message_id)
+
+        emoji = '✅'
+        member = guild.get_member(payload.user_id)
+
+        if str(payload.emoji) == emoji:
+            member_role = guild.get_role(1070171459202322442)
+            if member_role not in member.roles:
+                await member.add_roles(member_role)
+                print(f'Added role {member_role.name} to {member.display_name}')
+
     async def on_message_edit(self, before: nextcord.Message, after: nextcord.Message):
         channel = self.client.get_channel(1070176260891889725)
         title = f"Edited Message in {before.channel.name}"

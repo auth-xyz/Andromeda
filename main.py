@@ -25,6 +25,11 @@ async def on_ready():
 
 
 @client.event
+async def on_raw_reaction_add(payload):
+    await el.on_raw_reaction_add(payload)
+
+
+@client.event
 async def on_message(message):
     await el.on_message(message)
 
