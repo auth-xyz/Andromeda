@@ -1,11 +1,10 @@
-from nextcord import Interaction, Embed, Member, SlashOption, DiscordException, Permissions
+from nextcord import Interaction, Member, SlashOption, DiscordException
 from nextcord.ext import commands
-from nextcord.ext.commands import has_permissions
 
 dbot = commands.Bot()
 
 
-class int_unban(commands.Cog):
+class IntUnban(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
@@ -21,4 +20,4 @@ class int_unban(commands.Cog):
 
 
 def setup(bot):
-    bot.add_cog(int_unban(bot))
+    bot.add_cog(IntUnban(bot))

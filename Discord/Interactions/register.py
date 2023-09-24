@@ -14,7 +14,7 @@ col = db["Chatlogs"]
 dbot = commands.Bot()
 
 
-class int_register(commands.Cog):
+class IntRegister(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
@@ -47,4 +47,4 @@ class int_register(commands.Cog):
 
 
 def setup(bot):
-    bot.add_cog(int_register(bot))
+    bot.add_cog(IntRegister(bot))

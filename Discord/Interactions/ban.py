@@ -12,7 +12,7 @@ db = Database(getenv("DB_L"), "Offenses", "Logs")
 db.connect()
 
 
-class int_ban(commands.Cog):
+class intBan(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
@@ -26,6 +26,7 @@ class int_ban(commands.Cog):
         pr_desc = f"```\nModerator: {interaction.user.display_name}\nReason: {reason}\n```"
         chan_public = interaction.guild.get_channel(1070188919192305744)
         chan_private = interaction.guild.get_channel(1070569664599556146)
+        reason = "No reason given"
 
         payload = {
             "action": "ban",
@@ -60,4 +61,4 @@ class int_ban(commands.Cog):
 
 
 def setup(bot):
-    bot.add_cog(int_ban(bot))
+    bot.add_cog(intBan(bot))

@@ -13,7 +13,7 @@ db = Database(os.getenv("DB_L"), "Registration", "Users")
 db.connect()
 
 
-class int_profile(commands.Cog):
+class intProfile(commands.Cog):
     def __init__(self):
         ...
 
@@ -56,4 +56,4 @@ class int_profile(commands.Cog):
 
 
 def setup(dbot):
-    dbot.add_cog(int_profile())
+    dbot.add_cog(intProfile())

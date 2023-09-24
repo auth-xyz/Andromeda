@@ -3,6 +3,7 @@ import nextcord
 from nextcord import Interaction, SlashOption, Embed
 from nextcord.ext import commands
 from Discord.discord_rules import drules, drules2
+from Discord.nsfw_rules import nsfw_rules, reward
 
 intents = nextcord.Intents.all()
 client = commands.Bot("!", intents=intents)
@@ -39,8 +40,13 @@ class intEmbed(commands.Cog):
             color=nextcord.Color.dark_purple()
         )
         nsfw_embed = self.embed_creator(
-            title="NSFW Rules",
-            desc="```\n\n```",
+            title="",
+            desc=f"{nsfw_rules}",
+            color=nextcord.Color.red()
+        )
+        nsfw_reward = self.embed_creator(
+            title="",
+            desc=f"{reward}",
             color=nextcord.Color.red()
         )
 
@@ -50,6 +56,7 @@ class intEmbed(commands.Cog):
             await interaction.send(embed=rules_3)
         elif embed == "nsfw_rules":
             await interaction.send(embed=nsfw_embed)
+            await interaction.send(embed=nsfw_reward)
 
     @staticmethod
     def embed_creator(title, desc, color):

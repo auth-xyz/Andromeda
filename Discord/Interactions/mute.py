@@ -13,7 +13,7 @@ db = Database(getenv("DB_L"), "Offenses", "Logs")
 db.connect()
 
 
-class int_mute(commands.Cog):
+class intMute(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
@@ -27,6 +27,8 @@ class int_mute(commands.Cog):
         chan = interaction.guild.get_channel(1070569664599556146)
         embed = nextcord.Embed(title=text, description=desc, colour=nextcord.Colour.yellow())
         embed.set_thumbnail(user.display_avatar)
+
+        reason = "No reason given."
 
         payload = {
             "action": "mute",
@@ -72,4 +74,4 @@ class int_mute(commands.Cog):
 
 
 def setup(bot):
-    bot.add_cog(int_mute(bot))
+    bot.add_cog(intMute(bot))

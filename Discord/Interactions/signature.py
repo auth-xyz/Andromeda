@@ -13,7 +13,7 @@ db = Database(os.getenv("DB_L"), "Registration", "Users")
 db.connect()
 
 
-class int_sign(commands.Cog):
+class IntSign(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
@@ -31,4 +31,4 @@ class int_sign(commands.Cog):
 
 
 def setup(bot):
-    bot.add_cog(int_sign(bot))
+    bot.add_cog(IntSign(bot))

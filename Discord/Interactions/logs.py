@@ -12,7 +12,7 @@ database = Database(getenv("DB_L"), "Offenses", "Logs")
 database.connect()
 
 
-class int_logs(commands.Cog):
+class intLogs(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
@@ -51,4 +51,4 @@ class int_logs(commands.Cog):
 
 
 def setup(bot):
-    bot.add_cog(int_logs(bot))
+    bot.add_cog(intLogs(bot))

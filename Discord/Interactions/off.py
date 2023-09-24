@@ -6,7 +6,7 @@ from nextcord.ext import commands
 client = commands.Bot()
 
 
-class int_off(commands.Cog):
+class intOff(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.off_users = {}
@@ -40,4 +40,4 @@ class int_off(commands.Cog):
 
 
 def setup(bot):
-    bot.add_cog(int_off(bot))
+    bot.add_cog(intOff(bot))

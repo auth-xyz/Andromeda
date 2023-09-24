@@ -11,7 +11,7 @@ db = Database(getenv("DB_L"), "Offenses", "Logs")
 db.connect()
 
 
-class int_kick(commands.Cog):
+class intKick(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
@@ -25,6 +25,8 @@ class int_kick(commands.Cog):
 
         pu = interaction.guild.get_channel(1070188919192305744)
         pr = interaction.guild.get_channel(1070569664599556146)
+
+        reason = "No reason given."
 
         payload = {
             "action": "kick",
@@ -58,4 +60,4 @@ class int_kick(commands.Cog):
 
 
 def setup(bot):
-    bot.add_cog(int_kick(bot))
+    bot.add_cog(intKick(bot))

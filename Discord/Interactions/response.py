@@ -13,7 +13,7 @@ col = db["Chatlogs"]
 dbot = commands.Bot()
 
 
-class int_response(commands.Cog):
+class IntResponse(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
@@ -40,4 +40,4 @@ class int_response(commands.Cog):
 
 
 def setup(bot):
-    bot.add_cog(int_response(bot))
+    bot.add_cog(IntResponse(bot))
